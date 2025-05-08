@@ -653,7 +653,7 @@ thibautscairn={{.218,.207,454,1}},
 thukozods={{.787,.743,1300,1}},
 toadstoolhollow={{.266,.306,740,5}},
 toadstoolhollowlower={{.085,.527,740,1},{.279,.522,740,2},{.307,.751,740,3},{.303,.344,740,4}},
-tomboftheapostates={{.616,.597,297,1}},
+tomboftheapostates={{.636,.607,3948,1}},
 toothmaulgully={{.48,.78,390,1},{.24,.27,390,2},{.61,.67,390,3},{.28,.43,390,4},{.45,.63,390,5},{.48,.65,468,1}},
 tribulationcrypt={{.688,.206,229,1}},
 triplecirclemine={{.564,.322,266,1}},
@@ -6207,6 +6207,17 @@ local MapPinCallback={
 		end
 	end,
 	[66]=function(i,subzone)--Blackwood random encounters
+		local mapData=Achievements[subzone]
+		if mapData then
+			mapData=mapData[i]
+			if mapData then
+				for i1,pinData in pairs(mapData) do
+					PinManager:CreatePin(_G[CustomPins[i].name],{[1]=i,name="Random encounter"},pinData[1],pinData[2])
+				end
+			end
+		end
+	end,
+	[85]=function(i,subzone)--Western Solstice random encounters
 		local mapData=Achievements[subzone]
 		if mapData then
 			mapData=mapData[i]
